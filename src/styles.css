@@ -96,7 +96,7 @@ grid-area: main;
 }
 
 footer{
-    font-size: 70%;
+    font-size: clamp(6px, 1vw, 20px);
     color: var(--secondary-font-color);
     a{color: var(--secondary-font-color);}
     h1{
