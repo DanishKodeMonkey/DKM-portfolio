@@ -12,6 +12,8 @@ module.exports = {
 		new HtmlWebPackPlugin({
 			title: "danishKodeMonkey's portfolio",
 			template: './src/index.html',
+			filename: 'index.html',
+			inject: false,
 		}),
 	],
 	output: {
@@ -22,12 +24,19 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.html$/i,
+				use: 'html-loader',
+			},
+			{
 				test: /\.css$/i,
 				use: ['style-loader', 'css-loader'],
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
+				generator: {
+					filename: 'images/[hash]-[name].[ext]',
+				},
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
