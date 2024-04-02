@@ -16,7 +16,7 @@ body{
     display:grid;
     grid-template-columns: 1fr;
     grid-template-areas: "header" "main" "footer";
-    grid-template-rows:auto 10fr 1fr;
+    grid-template-rows:auto auto auto;
     background-image: linear-gradient(-189deg, var(--secondary-bg-color) clamp(2%, 20vw, 30vh), transparent clamp(calc(2% + 5px), calc(20vw + 5px), calc(30vh + 5px)));
     background-repeat: no-repeat;
     overflow-x: hidden;
@@ -93,11 +93,31 @@ header{
     }
 }
 main{
-grid-area: main;
+    font-size: clamp(8px, 1.5vw, 24px);
+    grid-area: main;
+    text-align: center;
+    .project-card-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:1rem;
+    overflow-y: scroll;
+
+}}
+.project-card{
+    text-align: center;
+        >a{
+        height:100%;
+        >img{
+            width: 80%;
+        }
+    }
 }
 
 footer{
     font-size: clamp(6px, 1vw, 20px);
+    grid-area: footer;
+    background-color: var(--secondary-bg-color);
+    flex-direction: column;
     color: var(--secondary-font-color);
     a{color: var(--secondary-font-color);}
     h1{
@@ -106,9 +126,7 @@ footer{
     >h1, h2, h3{
         margin:10px;
     }
-    grid-area: footer;
-    background-color: var(--secondary-bg-color);
-    flex-direction: column;
+
 }
 .contact-div{
     display: flex;
@@ -153,16 +171,35 @@ footer{
         h1{
             text-align: center;
         }
-        .text-div{
-
-        }
 
 }}
 @media screen and (max-width: 320px){
+    header, main, footer{
+        padding: 2vw;
+    }
 .card{
     padding-top: 8%;
 }
     article{
-        font-size: 5px;
+        font-size: 2vw;
+    }
+    main{
+        padding-top:0;
+        padding-bottom:0;
+        h1{
+            margin:0;
+        }
+        h2, h3{
+            margin-top: 0;
+        }
+    }
+    .project-card-container{
+        height: 41vh;
+        overflow-y:scroll
+    }
+    .project-card{
+        a>img{
+            width:50%;
+        }
     }
 }
