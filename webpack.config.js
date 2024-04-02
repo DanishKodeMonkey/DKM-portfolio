@@ -13,7 +13,6 @@ module.exports = {
 			title: "danishKodeMonkey's portfolio",
 			template: './src/index.html',
 			filename: 'index.html',
-			inject: false,
 		}),
 	],
 	output: {
@@ -24,12 +23,12 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.html$/i,
-				use: 'html-loader',
-			},
-			{
 				test: /\.css$/i,
 				use: ['style-loader', 'css-loader'],
+			},
+			{
+				test: /\.html$/i,
+				use: 'html-loader',
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
