@@ -42,7 +42,7 @@ header{
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.459);
 }
 .photo{
-    width: 25vw;
+    width: 30vw;
     >img{
         width: 100%;
     }
@@ -51,26 +51,32 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
     height: 20vw;
-    width: 55vw;
+    width: 80%;
     margin: clamp(1px, 2%, 10px);
-    padding: clamp(1px, 1%, 10px);
+    padding: clamp(10px, 1%, 15px);
     background-color: var(--card-bg-color);
     border: 1px solid black;
-    font-size: clamp(8px, 1.5vw, 16px);
+    font-size: clamp(8px, 1.5vw, 18px);
     >article{
-        height: clamp(40px, 12vw, 200px);
+        height: clamp(20px, 70%, 200px);
     }
     > article > h1{
-        font-size: clamp(5px, 4vw, 20px);;
+        font-size: clamp(5px, 4vw, 40px);;
        margin: 0;
     }
     >article > .text-div{
         margin: 0;
         height: 100%;
+        max-height:85%;
         overflow-y: scroll;
+        >p{
+            margin: 0;
+        }
     }
     >.contact{
+        height:15%;
         width: 92%;
         display: flex;
         justify-content: flex-end;
@@ -90,28 +96,32 @@ grid-area: main;
 footer{
     grid-area: footer;
 }
-
-@media screen and (max-width: 320px){
+@media screen and (max-width:1000px){
     header{
-        flex-direction: column;
-        margin-top: 10px;
+        margin-top: 16px;
     }
     .photo{
         position: absolute;
-        top:0;
+        top:10px;
         left:30px;
-        width: 10vw;
+        width: 15vw;
     }
     .card{
-        width: 90%;
-        height: 22vw;
+            width: 80%;
+            height: 25vw;
     }
     article{
-        height: clamp(10px, 2vw, 40px);
-        >h1{
+        h1{
             text-align: center;
         }
+        .text-div{
+            padding-left: 20px;
+        }
 
+}}
+@media screen and (max-width: 320px){
+
+    article{
+        font-size: 5px;
     }
-    
 }
