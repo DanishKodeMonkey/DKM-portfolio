@@ -104,11 +104,20 @@ main{
 
 }}
 .project-card{
+    background-color: var(--tertiary-bg-color);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px black;
+    font-size: 70%;
+    color: var(--secondary-font-color);
     text-align: center;
         >a{
         height:100%;
         >img{
+            border: 2px solid black;
+            border-radius: 50px;
             width: 80%;
+            max-height: 160px;
         }
     }
 }
