@@ -17,8 +17,6 @@ body{
     grid-template-columns: 1fr;
     grid-template-areas: "header" "main" "footer";
     grid-template-rows:auto 10fr 1fr;
-    margin-left:clamp(10px, 10vw, 100px);
-    margin-right: clamp(10px, 10vw, 100px);
     background-image: linear-gradient(-189deg, var(--secondary-bg-color) clamp(2%, 20vw, 30vh), transparent clamp(calc(2% + 5px), calc(20vw + 5px), calc(30vh + 5px)));
     background-repeat: no-repeat;
     overflow-x: hidden;
@@ -26,13 +24,17 @@ body{
 
 }
 
+header, main, footer{
+    padding: clamp(2px, 5%, 20px);
+    padding-left:clamp(2px, 5%, 50px);
+    padding-right:clamp(2px, 5%, 50px);
+}
 /* Header area */
 header{
     grid-area: header;
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding-top:clamp(2px, 1%, 20px);
 }
 
 .frame{
@@ -42,7 +44,7 @@ header{
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.459);
 }
 .photo{
-    width: 30vw;
+    width: 28vw;
     >img{
         width: 100%;
     }
@@ -52,7 +54,7 @@ header{
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    height: 20vw;
+    height: 22vw;
     width: 80%;
     margin: clamp(1px, 2%, 10px);
     padding: clamp(10px, 1%, 15px);
@@ -69,7 +71,7 @@ header{
     >article > .text-div{
         margin: 0;
         height: 100%;
-        max-height:85%;
+        max-height:80%;
         overflow-y: scroll;
         >p{
             margin: 0;
@@ -94,8 +96,41 @@ grid-area: main;
 }
 
 footer{
+    font-size: 70%;
+    color: var(--secondary-font-color);
+    a{color: var(--secondary-font-color);}
+    h1{
+        text-align: center;
+    }
+    >h1, h2, h3{
+        margin:10px;
+    }
     grid-area: footer;
+    background-color: var(--secondary-bg-color);
+    flex-direction: column;
 }
+.contact-div{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.contact-footer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5%;
+    >a{
+        width: 10%;
+        >img{
+            height: 100%;
+            filter: invert();
+        }
+    }
+    
+}
+
+
+
+
 @media screen and (max-width:1000px){
     header{
         margin-top: 16px;
