@@ -5,3 +5,27 @@
 .project-card:hover{
     transform: scale(1.1)
 }
+
+.wave-photo{
+    animation: waveAnimation 500ms ease-in-out 1;
+}
+.icon>a>img{
+    transition: 100ms ease-in-out;
+}
+.icon>a:hover>img{
+    transform: scale(1.5);
+    filter:drop-shadow(0 0 5px #ffd700)
+}
+@keyframes waveAnimation{
+    0%{
+        transform: rotateZ(0deg) scale(1)
+    }
+    25%{
+        transform: rotateZ(5deg) scale(1.3)
+    }
+    50%{transform: rotateZ(-5deg) scale(1.4)
+    }
+    75%{transform: rotateZ(5deg) scale(1.3)
+    }
+    100%{transform:rotateZ(0deg) scale(1)}
+}

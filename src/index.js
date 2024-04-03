@@ -2,6 +2,21 @@ import './styles.css'
 import './animations.css'
 
 /* Leveraging the web animations API for this */
+
+/* Animation for a cute wave animation on the photo */
+async function wavePhoto() {
+	console.log('attempting to wave')
+	const photo = document.querySelector('.photo')
+	photo.classList.add('wave-photo')
+	// remove animation class after animation finishes playing once
+	photo.addEventListener(
+		'animationend',
+		() => {
+			photo.classList.remove('wave-photo')
+		},
+		{ once: true }
+	)
+}
 async function slideInHeader() {
 	const header = document.querySelector('header')
 	const headerSlideIn = [
@@ -19,6 +34,10 @@ async function slideInHeader() {
 		const animation = header.animate(headerSlideIn, headerSlideInAnim)
 		animation.onfinish = resolve
 	})
+}
+async function slideInHeaderAndWavePhoto() {
+	await slideInHeader()
+	await wavePhoto()
 }
 // Thank you google for this one
 async function typeWriterEffect(element, text, speed) {
@@ -104,7 +123,7 @@ async function animateElementsOnStart() {
 	await setInitialCardState()
 
 	// start animations
-	await slideInHeader()
+	await slideInHeaderAndWavePhoto()
 	await animateTypeWriteEffect()
 	await animationProjectCards()
 	await slideInFooter()
@@ -112,4 +131,6 @@ async function animateElementsOnStart() {
 
 window.onload = async () => {
 	await animateElementsOnStart()
+	const photo = document.querySelector('.photo')
+	photo.addEventListener('click', wavePhoto)
 }
