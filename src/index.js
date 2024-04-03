@@ -54,13 +54,7 @@ async function animateTypeWriteEffect() {
 	await new Promise((resolve) => setTimeout(resolve, 100)) // delay before line 2
 	await typeWriterEffect(h2, 'More can be found on my GitHub!', 20)
 }
-async function setInitialCardState() {
-	const projectCards = document.querySelectorAll('.project-card')
-	projectCards.forEach((card) => {
-		card.style.opacity = '0'
-		card.style.transform = 'scale(0)'
-	})
-}
+
 async function animationProjectCards() {
 	const projectCards = document.querySelectorAll('.project-card')
 	const delayBetweenAnimations = 0 // adjust as needed
@@ -71,7 +65,6 @@ async function animationProjectCards() {
 
 		// apply animation to current card
 		await zoomInMain(projectCard)
-
 		// set delay between each animation
 		await new Promise((resolve) => setTimeout(resolve, delayBetweenAnimations))
 	}
@@ -119,8 +112,6 @@ async function animateElementsOnStart() {
 	const footer = document.querySelector('footer')
 	header.style.transform = 'translateY(-100%)'
 	footer.style.transform = 'translateY(100%)'
-	// initial state of cards (hidden)
-	await setInitialCardState()
 
 	// start animations
 	await slideInHeaderAndWavePhoto()

@@ -132,6 +132,7 @@ main{
 
 
 footer{
+    opacity: 0;
     font-size: clamp(6px, .5vw, 20px);
     grid-area: footer;
     background-color: var(--secondary-bg-color);
@@ -226,7 +227,7 @@ footer{
     .photo{
         position: absolute;
         top:0;
-        left:10px;
+        left:60px;
         width: 12vw;
     }
     .card{ 

@@ -1,11 +1,13 @@
 .project-card{
-    transition: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
 .project-card:hover{
-    transform: scale(1.1)
+    z-index: 1;
+    transform:scale(1.1) !important;
 }
-
 .wave-photo{
     animation: waveAnimation 500ms ease-in-out 1;
 }
