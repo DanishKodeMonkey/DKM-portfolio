@@ -26,8 +26,8 @@ body{
 
 header, main, footer{
     padding: clamp(2px, 5%, 20px);
-    padding-left:clamp(2px, 5%, 50px);
-    padding-right:clamp(2px, 5%, 50px);
+    padding-left:clamp(2px, 20%, 150px);
+    padding-right:clamp(2px, 20%, 150px);
 }
 /* Header area */
 header{
@@ -46,7 +46,7 @@ header{
 }
 .photo{
     align-self:flex-start;
-    width: 20vw;
+    width: 15vw;
     >img{
         width: 100%;
     }
@@ -56,14 +56,15 @@ header{
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    height: 18vw;
+    height: 13vw;
     width: 80%;
-    padding: clamp(10px, 1%, 15px);
+    padding: clamp(10px, 1%, 20px);
     background-color: var(--card-bg-color);
     border: 1px solid black;
-    font-size: clamp(8px, 1.5vw, 18px);
+    font-size: clamp(8px, 1.2vw, 24px);
     >article{
-        height: clamp(20px, 70%, 200px);
+        height: clamp(20px, 70%, 160px);
+
     }
     > article > h1{
         font-size: clamp(5px, 4vw, 40px);;
@@ -93,14 +94,24 @@ header{
     }
 }
 main{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     font-size: clamp(8px, 1.5vw, 24px);
     grid-area: main;
-    text-align: center;
+    .main-container{
+        width: 50%;
+    }
     .project-card-container{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap:1rem;
-    overflow-y: scroll;
+
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap:1rem;
+        padding-bottom: 1vw;
+        overflow-y: scroll;
+
 
 }}
 .project-card{
@@ -111,19 +122,17 @@ main{
     font-size: 70%;
     color: var(--secondary-font-color);
     text-align: center;
-        >a{
-        height:100%;
-        >img{
+        a>img{
             border: 2px solid black;
             border-radius: 50px;
-            width: 80%;
+            height: 50%;
             max-height: 160px;
         }
     }
-}
+
 
 footer{
-    font-size: clamp(6px, 1vw, 20px);
+    font-size: clamp(6px, .5vw, 20px);
     grid-area: footer;
     background-color: var(--secondary-bg-color);
     flex-direction: column;
@@ -131,6 +140,7 @@ footer{
     a{color: var(--secondary-font-color);}
     h1{
         text-align: center;
+        border-bottom: 3px dashed rgba(192, 192, 192, 0.452);
     }
     >h1, h2, h3{
         margin:10px;
@@ -157,7 +167,55 @@ footer{
 }
 
 
+@media screen and (min-width:2000px){
+    main{
 
+        h1{
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+        h2{
+            font-size: 1.5rem;
+            margin-top:0;
+        }
+        h3{
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+        h4{
+            font-size: 1rem;
+        }
+        .main-container{
+            width: 40%;
+        }
+        .project-card-container{
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+    header{
+        .photo{
+            max-width:11vw;
+        }
+        .card{
+            font-size: 1.3rem;
+            align-self: flex-end;
+            max-height:8vw;
+        }
+    }
+    footer{
+        font-size: 60%;
+        h1{
+            margin-bottom:0;
+        }
+        h1, h2, h3{
+            margin-top:0;
+        }
+    }
+    header, footer{
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+}
 
 @media screen and (max-width:1000px){
     header{
@@ -170,45 +228,61 @@ footer{
         left:30px;
         width: 15vw;
     }
-    .card{
-            width: 70%;
+    .card{ 
+            font-size: 1.6vw;
+            width: 90%;
             height: 25vw;
             padding-left: 5%;
 
     }
+
     article{
         h1{
             text-align: center;
         }
+    }
+main{
+    font-size: 1.5vw;
+    padding:0; 
+    .main-container{
+        width: 60%;
+    }
 
-}}
+    }
+    .project-card{
+        h3{
+            font-size: 2vw;
+        }
+        h4{
+            font-size: 1.5vw;
+        }
+    }
+}
 @media screen and (max-width: 320px){
     header, main, footer{
         padding: 2vw;
     }
-.card{
+    .card{
     padding-top: 8%;
-}
+    }   
     article{
-        font-size: 2vw;
+        font-size: 3.2vw;
     }
     main{
-        padding-top:0;
-        padding-bottom:0;
-        h1{
-            margin:0;
+        font-size: 3vw;
+        .main-container{
+            width: 80%;
         }
-        h2, h3{
-            margin-top: 0;
-        }
-    }
-    .project-card-container{
-        height: 41vh;
-        overflow-y:scroll
     }
     .project-card{
-        a>img{
-            width:50%;
+        h3{
+            font-size: 7vw;
+            margin-bottom: 0;
         }
+        h4{
+            margin-top: 0;
+            font-size: 4vw;
+        }
+    
     }
 }
