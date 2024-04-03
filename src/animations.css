@@ -14,7 +14,10 @@
 }
 .icon>a:hover>img{
     transform: scale(1.5);
-    filter:drop-shadow(0 0 5px #ffd700)
+    filter:drop-shadow(0 0 5px #C0C0C0)
+}
+.contact-footer>a:hover>img{
+    filter:invert() drop-shadow(0 0 5px #ffd700);
 }
 @keyframes waveAnimation{
     0%{
