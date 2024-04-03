@@ -1,5 +1,6 @@
 import './styles.css'
 import './animations.css'
+
 /* Leveraging the web animations API for this */
 async function slideInHeader() {
 	const header = document.querySelector('header')
@@ -19,22 +20,57 @@ async function slideInHeader() {
 		animation.onfinish = resolve
 	})
 }
+// Thank you google for this one
+async function typeWriterEffect(element, text, speed) {
+	for (let i = 0; i < text.length; i++) {
+		element.textContent += text.charAt(i)
+		await new Promise((resolve) => setTimeout(resolve, speed))
+	}
+}
 
-async function zoomInMain() {
-	const main = document.querySelector('main')
+async function animateTypeWriteEffect() {
+	const h1 = document.querySelector('.main-container h1')
+	const h2 = document.querySelector('.main-container h2')
+	await typeWriterEffect(h1, 'Check out my stuff!', 20) // adjust speed as needed
+	await new Promise((resolve) => setTimeout(resolve, 100)) // delay before line 2
+	await typeWriterEffect(h2, 'More can be found on my GitHub!', 20)
+}
+async function setInitialCardState() {
+	const projectCards = document.querySelectorAll('.project-card')
+	projectCards.forEach((card) => {
+		card.style.opacity = '0'
+		card.style.transform = 'scale(0)'
+	})
+}
+async function animationProjectCards() {
+	const projectCards = document.querySelectorAll('.project-card')
+	const delayBetweenAnimations = 0 // adjust as needed
+
+	// loop through each card
+	for (let i = 0; i < projectCards.length; i++) {
+		const projectCard = projectCards[i]
+
+		// apply animation to current card
+		await zoomInMain(projectCard)
+
+		// set delay between each animation
+		await new Promise((resolve) => setTimeout(resolve, delayBetweenAnimations))
+	}
+}
+async function zoomInMain(element) {
 	const mainZoomIn = [
 		{ opacity: '0', transform: 'scale(0)' },
 		{ opacity: '1', transform: 'scale(1)' },
 	]
 	const mainZoomInAnim = {
-		duration: 500,
+		duration: 180,
 		iterations: 1,
 		fill: 'forwards',
 		easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 	}
 
 	return new Promise((resolve) => {
-		const animation = main.animate(mainZoomIn, mainZoomInAnim)
+		const animation = element.animate(mainZoomIn, mainZoomInAnim)
 		animation.onfinish = resolve
 	})
 }
@@ -61,13 +97,16 @@ async function slideInFooter() {
 async function animateElementsOnStart() {
 	// Set initial positions of elements off-screen
 	const header = document.querySelector('header')
-	const main = document.querySelector('main')
 	const footer = document.querySelector('footer')
 	header.style.transform = 'translateY(-100%)'
-	main.style.transform = 'scale(0)'
 	footer.style.transform = 'translateY(100%)'
+	// initial state of cards (hidden)
+	await setInitialCardState()
+
+	// start animations
 	await slideInHeader()
-	await zoomInMain()
+	await animateTypeWriteEffect()
+	await animationProjectCards()
 	await slideInFooter()
 }
 
